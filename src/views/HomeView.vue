@@ -57,49 +57,62 @@
                     </v-col>
                 </v-row>
             </div>
+              <v-divider class="mt-5"></v-divider>
+
           </v-col>
-          <div class="text-center mt-4" id="portfolio">
-              <h2>What we Do</h2>
-              <div style="width: 120px; margin: 0 auto">
-                  <v-slider
-                          v-model="slider2"
-                          color="#ffa35b"
-                  ></v-slider>
-              </div>
+          <div class="text-center mt-5" id="portfolio">
+              <h2>Co do tej pory poznałem 🤔</h2>
           </div>
           <v-col cols="12">
               <div class="first" id="project">
                   <v-row>
                       <v-col cols="12">
-                          <div class="child">
+                          <div class="child mt-4">
                               <v-btn
-                                      icon="fas fa-laptop"
+                                      icon="fas fa-laptop without-fas"
                                       color="#ffa35b"
-                                      class="text-white"
+                                      class="text-white ml-5"
                               ></v-btn>
-                              <h3 class="ml-3 mt-4">Web Design</h3>
-                              <p class="text-grey ml-3 mt-4 text-caption">
-                                  Lorem, ipsum dolor sit amet <br />consectetur adipisicing
-                                  <br />consectetur adipis
-                              </p>
+                              <h3 class="ml-3 text-center mt-4">Website <br/> development</h3>
+                              <div class="text-grey flex ml-3 text-caption">
+                                  <div>
+                                      Laravel
+                                  </div>
+                                  <div>
+                                      PHP
+                                  </div>
+                                  <div>
+                                      Vue
+                                  </div>
+                                  <div>
+                                      JS
+                                  </div>
+                              </div>
                           </div>
-                          <div class="child">
+                          <div class="child" style="margin-top: -4px;">
                               <v-btn
-                                      icon="fas fa-mobile-alt"
+                                      icon="fas fa-mobile-alt without-fas"
                                       color="#ffa35b"
                                       class="text-white"
                               ></v-btn>
-                              <h3 class="ml-3 mt-4">App Design</h3>
-                              <p class="text-grey ml-3 mt-4 text-caption">
-                                  Lorem, ipsum dolor sit amet <br />consectetur adipisicing
-                                  <br />consectetur adipis
-                              </p>
+                              <h3 class="ml-3 mt-4">Mobile application <br/> development</h3>
+                              <div class="text-grey flex ml-3 text-caption">
+                                  <div>
+                                      Dart
+                                  </div>
+                                  <div>
+                                      Flutter
+                                  </div>
+                                  <div>
+                                      Bloc
+                                  </div>
+                              </div>
                           </div>
                       </v-col>
                   </v-row>
                   <v-divider></v-divider>
               </div>
-              <v-col cols="12" sm="12" class="mt-5" id="services">
+              <v-col cols="12" sm="12" class="mt-5" id="pages">
                   <div class="d-flex justify-center mb-6">
                       <v-btn color="#ffa35b" class="mr-2">All</v-btn>
                       <v-btn class="mr-2" variant="tonal">Laravel</v-btn>
@@ -268,7 +281,6 @@ export default defineComponent({
     width: 100%;
     height: 280px;
     text-align: center;
-    padding: 2rem 2rem;
 }
 .child {
     display: inline-block;
@@ -277,4 +289,10 @@ export default defineComponent({
     text-align: center;
     margin-right: 8px;
 }
+
+:deep(.without-fas){
+    display: flex;
+}
+
+
 </style>

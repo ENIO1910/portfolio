@@ -8,11 +8,10 @@
         </v-btn>
         <v-spacer></v-spacer>
         <v-btn text @click="scroll('home')" class="text-orange">Home</v-btn>
-        <v-btn text @click="scroll('About')" class="text-white">About</v-btn>
-        <v-btn text @click="scroll('portfolio')" class="text-white">portfolio</v-btn>
-        <v-btn text @click="scroll('services')" class="text-white">services</v-btn>
-        <v-btn text @click="scroll('page')" class="text-white">page</v-btn>
-        <v-btn text @click="scroll('contact')" class="text-white">contact</v-btn>
+        <v-btn text @click="scroll('about')" class="text-white">About</v-btn>
+        <v-btn text @click="scroll('portfolio')" class="text-white">Portfolio</v-btn>
+        <v-btn text @click="scroll('pages')" class="text-white">Pages</v-btn>
+        <v-btn text @click="scroll('contact')" class="text-white">Contact</v-btn>
     </v-app-bar>
 </template>
 
@@ -22,10 +21,9 @@
           scroll(refName) {
               const element = document.getElementById(refName);
               element.scrollIntoView({behavior: "smooth"});
-
-          }
-      }
-  }
+          },
+      },
+  };
 </script>
 
 <style>
