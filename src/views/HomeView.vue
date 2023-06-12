@@ -46,7 +46,7 @@
                                 Since then, I have done small projects mostly for myself.
                                 However, I gained my commercial experience when I worked in a software house.
                             </p>
-                            <v-btn tile dark color="#ffa35b" class="mt-4">
+                            <v-btn tile dark color="#ffa35b" class="mt-4" @click="downloadResume">
                                 Download Resume
                             </v-btn>
                         </v-col>
@@ -56,7 +56,7 @@
 
             </v-col>
             <div class="text-center mt-5" id="portfolio">
-                <h2>Co do tej pory poznałem 🤔</h2>
+                <h2>What I've learned so far 🤔</h2>
             </div>
             <div class="first" id="project">
                 <div class="d-flex flex-column justify-center text-center mt-5">
@@ -110,20 +110,41 @@
             </div>
             <v-col cols="12" sm="12" id="pages">
                 <div class="d-flex justify-center mb-6">
-                    <v-btn color="#ffa35b" class="mr-2">All</v-btn>
-                    <v-btn class="mr-2" variant="tonal">Laravel</v-btn>
-                    <v-btn class="mr-2" variant="tonal">Vue</v-btn>
+                    <v-btn
+                        :color="isActive('all') ? '#ffa35b' : ''"
+                        variant="tonal"
+                        class="mr-2"
+                        @click="showAll"
+                    >
+                        All
+                    </v-btn>
+                    <v-btn
+                        :color="isActive('laravel') ? '#ffa35b' : ''"
+                        variant="tonal"
+                        class="mr-2"
+                        @click="showLaravel"
+                    >
+                        Laravel
+                    </v-btn>
+                    <v-btn
+                        :color="isActive('vue') ? '#ffa35b' : ''"
+                        variant="tonal"
+                        class="mr-2"
+                        @click="showVue"
+                    >
+                        Vue
+                    </v-btn>
                 </div>
             </v-col>
-            <v-col cols="12" class="imgHover ">
+            <v-col cols="12" class="imgHover">
                 <v-row class="fill-height" align="center" justify="center">
-                    <template v-for="(item, i) in items" :key="i">
+                    <template v-for="(item, i) in filteredItems" :key="i">
                         <v-col cols="12" md="4">
                             <v-hover v-slot="{ isHovering, props }">
                                 <v-card
-                                        :elevation="isHovering ? 12 : 2"
-                                        :class="{ 'on-hover': isHovering }"
-                                        v-bind="props"
+                                    :elevation="isHovering ? 12 : 2"
+                                    :class="{ 'on-hover': isHovering }"
+                                    v-bind="props"
                                 >
                                     <v-img :src="item.img" height="225px" cover></v-img>
                                 </v-card>
@@ -205,34 +226,79 @@
         </v-container>
     </v-app>
 </template>
-
 <script>
-import {defineComponent} from 'vue';
-
-// Components
+import { defineComponent } from 'vue';
 import NavBar from '../components/NavBar.vue';
 
 export default defineComponent({
     name: 'HomeView',
-    setup() {
+    components: {
+        NavBar,
+    },
+    data() {
         return {
             slider2: 50,
             items: [
                 {
-                    img: "img/webmein.png"
+                    img: "img/webmein.png",
+                    category: "Laravel"
                 },
                 {
-                    img: "img/spacer.png"
+                    img: "img/spacer.png",
+                    category: "Vue"
                 },
             ],
+            showOnlyLaravel: false,
+            showOnlyVue: false,
+            activeButton: 'all',
         };
     },
+    methods: {
+        showAll() {
+            this.showOnlyLaravel = false;
+            this.showOnlyVue = false;
+            this.activeButton = 'all';
+        },
+        showLaravel() {
+            this.showOnlyLaravel = true;
+            this.showOnlyVue = false;
+            this.activeButton = 'laravel';
+        },
+        showVue() {
+            this.showOnlyLaravel = false;
+            this.showOnlyVue = true;
+            this.activeButton = 'vue';
+        },
+        isActive(button) {
+            return this.activeButton === button;
+        },
+        downloadResume() {
+            const link = document.createElement('a');
+            link.href = 'cv/cv.pdf';
+            link.download = 'cv.pdf';
+            link.target = '_blank';
 
-    components: {
-        NavBar,
+            document.body.appendChild(link);
+
+            link.click();
+
+            document.body.removeChild(link);
+        },
+    },
+    computed: {
+        filteredItems() {
+            if (this.showOnlyLaravel) {
+                return this.items.filter(item => item.category === 'Laravel');
+            } else if (this.showOnlyVue) {
+                return this.items.filter(item => item.category === 'Vue');
+            } else {
+                return this.items;
+            }
+        }
     },
 });
 </script>
+
 <style scoped>
 .v-container {
     padding: 16px 0;
