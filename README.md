@@ -1,5 +1,8 @@
-# portfolio
-
+# PORTFOLIO
+## Description
+```
+here is some information about me
+```
 ## Project setup
 ```
 npm install
