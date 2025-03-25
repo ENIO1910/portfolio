@@ -2,8 +2,8 @@
 ## Description
 ```
 here is some information about me
-[demo](https://patryks.netlify.app/)
 ```
+[demo](https://patryks.netlify.app/)
 
 ## Preview
 ![image](https://github.com/ENIO1910/portfolio/assets/63077435/4f060baf-054f-42d2-94dc-d224ca24e41b)
